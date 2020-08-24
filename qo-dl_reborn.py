@@ -361,7 +361,11 @@ def download(id, album_fol_s, meta, num, tot, fol, qual, cov, ref, tag_cfg, fn_t
 		ext = ".mp3"
 	else:
 		ext = ".flac"
-	post = os.path.join(album_fol_s, sanitize(fn_template) + ext)
+	if url_resp['format_id'] >= 7:
+	  hifi=("[HD]")
+	else:
+	  hifi=("[SD]")
+	post = os.path.join(album_fol_s, sanitize(fn_template) + hifi + ext)
 	exist_check(pre)
 	if exist_check(post):
 		print("Track already exists locally. Skipped.")
